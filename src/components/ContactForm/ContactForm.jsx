@@ -1,5 +1,6 @@
 import { ErrorMessage, Field, Form, Formik } from "formik";
 import * as Yup from "yup";
+import s from "./ContactForm.module.css";
 
 const ContactForm = ({ func }) => {
   const initialValues = {
@@ -12,14 +13,14 @@ const ContactForm = ({ func }) => {
   };
 
   const userSchema = Yup.object({
-    name: Yup.string("This is required field")
+    name: Yup.string("this is required field")
       .required()
-      .min(3, "Write minimum 3 symbols")
-      .max(50, "Write maximum 50 symbols"),
-    number: Yup.string("This is required field")
+      .min(3, "write minimum 3 symbols")
+      .max(50, "write maximum 50 symbols"),
+    number: Yup.string("this is required field")
       .required()
-      .min(3, "Write minimum 3 symbols")
-      .max(50, "Write maximum 50 symbols"),
+      .min(3, "write minimum 3 symbols")
+      .max(50, "write maximum 50 symbols"),
   });
   return (
     <div>
@@ -28,16 +29,16 @@ const ContactForm = ({ func }) => {
         initialValues={initialValues}
         onSubmit={handleSubmit}
       >
-        <Form>
-          <label>
+        <Form className={s.form}>
+          <label className={s.label}>
             <span>Name</span>
-            <Field name="name" />
-            <ErrorMessage name="name" component="span" />
+            <Field className={s.input} name="name" />
+            <ErrorMessage className={s.error} name="name" component="span" />
           </label>
-          <label>
+          <label className={s.label}>
             <span>Number</span>
-            <Field name="number" />
-            <ErrorMessage name="number" component="span" />
+            <Field className={s.input} name="number" />
+            <ErrorMessage name="number" component="span" className={s.error} />
           </label>
           <button type="submit">Add contact</button>
         </Form>

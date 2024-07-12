@@ -3,6 +3,7 @@ import SearchBox from "./SearchBox/SearchBox";
 import ContactList from "./ContactList/ContactList";
 import { nanoid } from "nanoid";
 import { useState, useEffect } from "react";
+import s from "./App.module.css";
 
 function App() {
   const localKey = "contactsData";
@@ -49,7 +50,7 @@ function App() {
     window.localStorage.setItem(localKey, JSON.stringify(contacts));
   }, [contacts]);
   return (
-    <div>
+    <div className={s.wrapper}>
       <h1>Phonebook</h1>
       <ContactForm func={updateContacts} />
       <SearchBox func={handleFilter} value={searchValue} />
